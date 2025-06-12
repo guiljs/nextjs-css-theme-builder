@@ -285,33 +285,64 @@ export default function ThemeBuilder() {
           </div>
         </div>
 
-        {/* Center Panel - Tints and Shades */}
-        <div style={{ ...neumorphicStyle() }}>
-          <h2 style={{ marginBottom: '20px', fontSize: '1.5rem' }}>Color Palette</h2>
-          <div style={{ display: 'grid', gap: '15px' }}>
-            {Object.entries(palette).map(([key, color]) =>
-              <>
-                <div
-                    style={{
-                    width: '',
-                    height: '60px',
-                    backgroundColor: color,
-                    borderRadius: '10px',
-                    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-                    padding: '10px',
-                    color: parseInt(key) > 500 ? 'white' : palette['900']
-                  }}
-                >
-                  <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
-                    {key === '500' ? 'Base' : key}
-                  </div>
-                  <div style={{ opacity: 0.7, fontSize: '0.9rem' }}>{color}</div>
-                </div>
+{/* Center Panel - Tints and Shades */}
+<div style={{ ...neumorphicStyle() }}>
+  <h2 style={{ marginBottom: '20px', fontSize: '1.5rem' }}>Color Palette</h2>
 
-              </>
-            )}
+  {/* Tints Section */}
+  <div style={{ marginBottom: '30px' }}>
+    <h3 style={{ marginBottom: '15px' }}>Tints</h3>
+    <div style={{ display: 'grid', gap: '15px' }}>
+      {Object.entries(palette)
+        .filter(([key]) => parseInt(key) < 500) // Filtra apenas os tints
+        .map(([key, color]) => 
+          <div
+              key={key}
+              style={{
+              height: '60px',
+              backgroundColor: color,
+              borderRadius: '10px',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              padding: '10px',
+              color: parseInt(key) > 500 ? 'white' : palette['900']
+            }}
+          >
+            <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
+              {key === '500' ? 'Base' : key}
+            </div>
+            <div style={{ opacity: 0.7, fontSize: '0.9rem' }}>{color}</div>
           </div>
-        </div>
+        )}
+    </div>
+  </div>
+
+  {/* Shades Section */}
+  <div>
+    <h3 style={{ marginBottom: '15px' }}>Shades</h3>
+    <div style={{ display: 'grid', gap: '15px' }}>
+      {Object.entries(palette)
+        .filter(([key]) => parseInt(key) >= 500) // Filtra apenas os shades
+        .map(([key, color]) => 
+          <div
+              key={key}
+              style={{
+              height: '60px',
+              backgroundColor: color,
+              borderRadius: '10px',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              padding: '10px',
+              color: parseInt(key) > 500 ? 'white' : palette['900']
+            }}
+          >
+            <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>
+              {key === '500' ? 'Base' : key}
+            </div>
+            <div style={{ opacity: 0.7, fontSize: '0.9rem' }}>{color}</div>
+          </div>
+        )}
+    </div>
+  </div>
+</div>
 
         {/* Right Panel - Live Preview */}
         <div style={neumorphicStyle()}>
