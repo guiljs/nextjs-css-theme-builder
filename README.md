@@ -1,3 +1,7 @@
+My simple CSS theme builder
+![localhost_3000_](https://github.com/user-attachments/assets/733e5834-68bb-4976-822b-201384edba74)
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
