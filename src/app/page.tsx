@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { ChromePicker, SketchPicker } from 'react-color';
 import { FiSun, FiMoon, FiDroplet, FiEye, FiGrid, FiSliders } from 'react-icons/fi';
 
 export default function ThemeBuilder() {
@@ -196,7 +197,7 @@ export default function ThemeBuilder() {
           </h2>
 
           <div style={{ marginBottom: '30px' }}>
-            <label style={{ display: 'block', marginBottom: '10px' }}>Base Color</label>
+            <h3 style={{ marginBottom: '15px' }}>Base color</h3>
             <div style={{
               ...neumorphicStyle(false),
               padding: '10px',
@@ -205,36 +206,13 @@ export default function ThemeBuilder() {
               gap: '15px'
             }}
             >
-              <input
-                  type="color"
-                  value={baseColor}
-                  onChange={(e) => setBaseColor(e.target.value)}
-                  style={{
-                  width: '60px',
-                  height: '60px',
-                  borderRadius: '20px',
-                  cursor: 'pointer',
-                  border: 'none',
-                  padding: 0,
-                  overflow: 'hidden',
-                  background: 'none'
-                }}
+
+              <SketchPicker
+                  disableAlpha
+                  color={baseColor}
+                  onChange={(color) => setBaseColor(color.hex)}
               />
-              <input
-                  type="text"
-                  value={baseColor}
-                  onChange={(e) => setBaseColor(e.target.value)}
-                  style={{
-                  flex: 1,
-                  padding: '10px',
-                  border: 'none',
-                  borderRadius: '10px',
-                  background: darkMode ? '#2a2a2a' : '#ffffff',
-                  color: darkMode ? '#ffffff' : '#333333',
-                  fontSize: '1rem',
-                  width: '100px'
-                }}
-              />
+
             </div>
           </div>
 
